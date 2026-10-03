@@ -13,7 +13,7 @@ import webbrowser
 class Window(tk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("WaveDown")
+        self.title("NAVD")
         self.geometry("600x650")
 
         # Check values
@@ -22,7 +22,7 @@ class Window(tk.CTk):
         self.loaded_default = True
         self.search_mode = 'id' # default mode search (By URL)
         self.thetmp = tempfile.gettempdir() # get temporary folder
-        self.tmp = os.path.join(self.thetmp, 'wavedown') # make program's temporary folder
+        self.tmp = os.path.join(self.thetmp, 'navd') # make program's temporary folder
         # check for ffmpeg and ytdlp
         self.ffmpeg = which('ffmpeg')
         self.ytdlp = which('yt-dlp')
@@ -85,7 +85,7 @@ class Window(tk.CTk):
         self.download_options_label = tk.CTkLabel(self, bg_color='gray', text='|    Metadata    |',height=20)
         self.download_options_label.pack(fill='x')
 
-        self.musictitle = tk.CTkLabel(self, text="Title: WaveDown", font=('',14))
+        self.musictitle = tk.CTkLabel(self, text="Title: NAVD", font=('',14))
         self.musictitle.pack()
 
         self.imglab = tk.CTkFrame(self)
@@ -94,7 +94,7 @@ class Window(tk.CTk):
         self.imglab.pack()
 
         self.authorlab = tk.CTkLabel(self, text="Author: qmicropi")
-        self.videoidlab = tk.CTkLabel(self, text="ID: https://github.com/qmicropi/wavedown")
+        self.videoidlab = tk.CTkLabel(self, text="ID: https://github.com/qmicropi/navd")
         self.datelab = tk.CTkLabel(self, text=f"Date: {datetime.datetime.now()}")
 
         self.authorlab.pack()
@@ -161,7 +161,7 @@ class Window(tk.CTk):
                 loadit('text', fttextbox.get('1.0', tk.END))
             w.destroy()
             r = tk.CTkToplevel(self)
-            r.title('WaveDown')
+            r.title('NAVD')
             ftlabel = tk.CTkLabel(r, text='Paste Netscape format cookies for youtube', font=('',16))
             ftlabel.pack(pady=20)
             fttextbox = tk.CTkTextbox(r)
@@ -178,7 +178,7 @@ class Window(tk.CTk):
             fromfile()
 
         w = tk.CTkToplevel(self)
-        w.title('WaveDown')
+        w.title('NAVD')
         label = tk.CTkLabel(w, text='In which way do you want to add the cookies.txt?', font=('',16))
         label.pack(pady=20)
         frame = tk.CTkFrame(w)
@@ -199,8 +199,8 @@ class Window(tk.CTk):
 
         if self.is_working: # check if the program is still working
             w = tk.CTkToplevel(self)
-            w.title('WaveDown')
-            label = tk.CTkLabel(w, text='WaveDown is still WORKING.\nAre you SURE you want to leave?', font=('',16))
+            w.title('NAVD')
+            label = tk.CTkLabel(w, text='NAVD is still WORKING.\nAre you SURE you want to leave?', font=('',16))
             label.pack(pady=20)
             frame = tk.CTkFrame(w)
             ybutton = tk.CTkButton(frame, text='Yes', command=lambda: finally_close(True)) # if user still wants to leave, force quit.
@@ -239,7 +239,7 @@ class Window(tk.CTk):
         
         if not data:
             details = "You are either using wrong search mode, or youtube is requiring cookies.\n\nLearn how to get youtube cookies here:\nhttps://rentry.co/howtogetyoutubecookies"
-            messagebox.askokcancel(title='WaveDown',message='Something went wrong, did not get the metadata.', detail=details)
+            messagebox.askokcancel(title='NAVD',message='Something went wrong, did not get the metadata.', detail=details)
             return
         
 
@@ -322,7 +322,7 @@ class Window(tk.CTk):
         savepath = self.fpe.get()
         vid = str(self.mvid) or None
         if not vid:
-            messagebox.askokcancel(title='WaveDown',message='No video ID',detail='Make sure to search for a song.')
+            messagebox.askokcancel(title='NAVD',message='No video ID',detail='Make sure to search for a song.')
             return
         fileformat = self.file_format.get()
         ytdargs = [self.ytdlp, '-x', '--audio-format', fileformat, '-o', os.path.join(self.tmp, 'song.%(ext)s'), '--embed-metadata']
@@ -351,7 +351,7 @@ class Window(tk.CTk):
                 if char == "\r" or char == "\n":
                     print(buffer)
                     if "cookies" in buffer:
-                        ask = messagebox.askokcancel(title='WaveDown', message='ERROR! YouTube requests cookies.', detail='You need to get cookies.\nYou can learn here:\nhttps://rentry.co/howtogetyoutubecookies\nClick OK to go to the website')
+                        ask = messagebox.askokcancel(title='NAVD', message='ERROR! YouTube requests cookies.', detail='You need to get cookies.\nYou can learn here:\nhttps://rentry.co/howtogetyoutubecookies\nClick OK to go to the website')
                         if ask:
                             webbrowser.open('https://rentry.co/howtogetyoutubecookies')
                             self.download_button.configure(state='normal')
