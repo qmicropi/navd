@@ -1,0 +1,15 @@
+main.build/
+main.dist/
+main.onefile-build/
+.venv/
+navd-linux
+build/
+dist/
+.idea/
+.vscode/
+*.bin
+*.spec
+*.exe
+cookies.txt
+env/
+venv/
